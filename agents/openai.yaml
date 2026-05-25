@@ -1,0 +1,4 @@
+interface:
+  display_name: "Dynamic Skill MCP Router"
+  short_description: "Dynamically choose the best installed skill or MCP"
+  default_prompt: "Use $dynamic-skill-mcp-router to discover the currently installed skills and MCPs, then choose the best one for this task and give me the exact trigger phrase."
