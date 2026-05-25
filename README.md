@@ -1,8 +1,26 @@
 # Dynamic Skill MCP Router
 
-`dynamic-skill-mcp-router` is a Codex skill that inspects the local environment, discovers the skills and MCP servers that are actually available, and recommends the best fit for a given task.
+`dynamic-skill-mcp-router` is a portable Codex skill that inspects the current machine, discovers the skills and MCP servers that are actually available, and recommends the best fit for a task with an exact trigger phrase.
 
-Instead of relying on a static cheat sheet, it routes based on what is installed right now.
+Instead of relying on a static cheat sheet, it routes based on what is installed right now on each user's environment.
+
+## Why This Exists
+
+Teams do not share the same Codex setup.
+
+One developer may have CodeGraph and Apifox configured. Another may only have document skills. A third may have custom local skills and a different MCP layout. Static notes go stale quickly in that kind of environment.
+
+This skill solves that by discovering the live environment first, then routing the task to the most relevant installed skill or MCP.
+
+## Good Fit
+
+Use this repository if you want a Codex skill that can:
+
+- discover installed skills dynamically
+- discover configured MCP servers dynamically
+- recommend the best tool for a task
+- return the exact next-turn trigger phrase
+- work across different user machines without hardcoded local paths
 
 ## Features
 
@@ -11,6 +29,13 @@ Instead of relying on a static cheat sheet, it routes based on what is installed
 - Uses discovered skill metadata as the primary signal for skill intent
 - Helps choose the best fit for a user task
 - Returns an exact trigger phrase the user can copy into the next turn
+
+## Example Tasks
+
+- "Which installed skill should I use to review this `.pcap` file?"
+- "Should this OpenAPI update go through Apifox MCP or a local skill?"
+- "What is the best available tool on this machine for understanding this codebase?"
+- "I do not want to remember skill trigger prompts. Route this task for me."
 
 ## Installation
 
@@ -71,6 +96,14 @@ Prompt example:
 
 ```text
 Use dynamic-skill-mcp-router to inspect my current environment and tell me whether I should use a skill or an MCP for this job: update the OpenAPI definition in Apifox.
+```
+
+Typical output:
+
+```text
+Recommended: Apifox MCP
+Why: The task is about updating an OpenAPI definition in Apifox, and the current environment has Apifox MCP configured.
+Trigger phrase: Use the Apifox MCP tools to update the OpenAPI definition in Apifox for this project.
 ```
 
 ## How Discovery Works
