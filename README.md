@@ -64,6 +64,14 @@ If this skill lives in a larger repository and needs to be installed by explicit
 npx skills add https://github.com/<owner>/<repo> --skill dynamic-skill-mcp-router -g -y
 ```
 
+In a verified test with the Skills CLI, the installed skill landed under:
+
+```text
+~/.agents/skills/dynamic-skill-mcp-router
+```
+
+That location is included in this repository's default discovery roots, so the bundled `scripts/discover.py` script will still find it.
+
 If you are not using the Skills CLI, copy the directory into:
 
 ```text
