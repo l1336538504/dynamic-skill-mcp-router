@@ -14,12 +14,15 @@ Instead of relying on a static cheat sheet, it routes based on what is installed
 
 ## Installation
 
-Install from a local path or from GitHub using the Skills CLI.
+Install either by copying the skill into your Codex skills directory, or from GitHub using the Skills CLI.
 
 ### From a local checkout
 
+Copy the directory into your Codex skills folder:
+
 ```bash
-npx skills add /path/to/dynamic-skill-mcp-router -g -y
+mkdir -p "${CODEX_HOME:-$HOME/.codex}/skills"
+cp -R /path/to/dynamic-skill-mcp-router "${CODEX_HOME:-$HOME/.codex}/skills/dynamic-skill-mcp-router"
 ```
 
 ### From GitHub
@@ -30,13 +33,13 @@ If this repository contains only this single skill at the repo root:
 npx skills add <owner>/<repo> -g -y
 ```
 
-If this skill lives in a subdirectory of a larger repository, install that path:
+If this skill lives in a larger repository and needs to be installed by explicit skill name:
 
 ```bash
-npx skills add <owner>/<repo>@dynamic-skill-mcp-router -g -y
+npx skills add https://github.com/<owner>/<repo> --skill dynamic-skill-mcp-router -g -y
 ```
 
-If your environment uses Codex-native skill installation workflows instead of the Skills CLI, copy the directory into:
+If you are not using the Skills CLI, copy the directory into:
 
 ```text
 $CODEX_HOME/skills/dynamic-skill-mcp-router
